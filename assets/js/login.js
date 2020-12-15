@@ -30,7 +30,7 @@ $(function () {
     e.preventDefault();
     let str = $(this).serialize();
     $.ajax({
-      url: "http://ajax.frontend.itheima.net/api/reguser",
+      url: "/api/reguser",
       type: "POST",
       data: str,
       success: function (res) {
@@ -49,7 +49,7 @@ $(function () {
     e.preventDefault();
     let str = $(this).serialize();
     $.ajax({
-      url: "http://ajax.frontend.itheima.net/api/login",
+      url: "/api/login",
       type: "POST",
       data: str,
       success: function (res) {
@@ -57,6 +57,7 @@ $(function () {
         if (res.status !== 0) {
           return layer.msg(res.message, { icon: 6 });
         }
+        localStorage.setItem("token", res.token);
         layer.msg(res.message, { icon: 6, time: 2000 }, function () {
           location.href = "../../home/index.html";
         });
