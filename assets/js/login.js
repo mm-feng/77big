@@ -38,7 +38,7 @@ $(function () {
         if (res.status !== 0) {
           return layer.msg(res.message, { icon: 6 });
         }
-        layer.msg(res.message, { icon: 6, time: 500 }, function () {
+        layer.msg("恭喜你" + res.message, { icon: 6, time: 500 }, function () {
           $(".regLink").click();
         });
       },
@@ -53,13 +53,11 @@ $(function () {
       type: "POST",
       data: str,
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         if (res.status !== 0) {
           return layer.msg(res.message, { icon: 6 });
         }
-        //成功后将token存储到localStorage
         localStorage.setItem("token", res.token);
-
         layer.msg(res.message, { icon: 6, time: 2000 }, function () {
           location.href = "../../home/index.html";
         });
