@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/article/art-list.css">
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>分类</th>
+                        <th>发表时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tb">
+                   
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页区 -->
+        <div id="pageBox"></div>
+    </div>
+    <!-- 模板 -->
+    <script type="text/html" id="listTpl">
+        {{each data v i}}
+            <tr>
+                <td>{{v.title}}</td>
+                <td>{{v.cate_name}}</td>
+                <td>{{v.pub_date | filterTime}}</td>
+                <td>{{v.state}}</td>
+                <td>
+                    <button class="layui-btn layui-btn-xs edit" lay-submit lay-filter="formDemo">编辑</button>
+                    <button type="reset" class="delete layui-btn layui-btn-primary  layui-btn-danger layui-btn-xs" data-id="{{v.Id}}" delete>删除</button>
+                </td>
+            </tr>
+        {{/each}}
+    </script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/rootDirectory.js"></script>
+    <script src="../assets/js/article/art-list.js"></script>
+</body>
+
+</html>

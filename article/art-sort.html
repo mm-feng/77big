@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/article/art-sort.css">
+</head>
+
+<body>
+
+    <div class="layui-card">
+        <div class="layui-card-header">文章类别管理
+            <button type="button" class="layui-btn layui-btn-sm"
+                id="addbtn">添加类别</button>
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col width="200">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>分类名称</th>
+                        <th>分类别名</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tb">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 模板 获取数据 -->
+    <script type="text/html" id="artTpl">
+    {{each data v i}}
+    <tr>
+        <td>{{v.name}}</td>
+        <td>{{v.alias}}</td>
+        <td>
+            <button class="layui-btn layui-btn-xs " lay-submit lay-filter="formDemo" id="edit" data-id="{{v.Id}}">编辑</button>
+            <button type="reset" class="layui-btn-xs layui-btn layui-btn-primary layui-btn-danger" id="delete" data-id="{{v.Id}}">删除</button>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+    <!--模板 添加数据 -->
+    <script type="text/html" id="addTpl">
+    <form class="layui-form" id="addForm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类别名</label>
+            <div class="layui-input-block">
+                <input type="text" name="alias" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</script>
+    <!--编辑模板  -->
+    <script type="text/html" id="editTpl">
+    <form class="layui-form" id="editForm">
+        <div class="layui-form-item layui-hide">
+            <label class="layui-form-label">id</label>
+            <div class="layui-input-block">
+                <input type="text" name="Id" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input Id " readonly >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input name"  >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类别名</label>
+            <div class="layui-input-block">
+                <input type="text" name="alias" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input alias" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">确认修改</button>
+            </div>
+        </div>
+    </form>
+</script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/rootDirectory.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/js/article/art-sort.js"></script>
+</body>
+
+</html>

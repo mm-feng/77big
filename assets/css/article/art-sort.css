@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+body {
+    padding: 15px;
+}
+
+     #addbtn {
+        float: right;
+        margin-top: 6px;
+    }
+    .layui-form {
+        padding: 20px 30px;
+    }
+
+    
